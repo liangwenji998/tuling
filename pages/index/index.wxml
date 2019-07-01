@@ -1,0 +1,44 @@
+
+<!--index.wxml-->
+  <view class='que' >
+<scroll-view scroll-y="true" style="height:{{height}}px" scroll-top="{{scrollTop}}">
+  <!--此处用block包裹，用wx.for循环头像和文字  -->
+  <block wx:for="{{syas}}"  wx:for-item="item" wx:key='{{syas}}' > 
+    <!--此处是内容输入处  -->
+    <view class='con'>
+      <!-- 此处是用户输入文字与图片显示 -->
+      <view class='isay'>
+        <!-- 此处是用户输入文字显示 -->
+        <view class='r-t'>
+          <text bindtap='voice'  data-text='{{item.isay}}'>{{item.isay}}</text>
+        </view>
+        <!--此处是获取用户图片显示  -->
+        <view class='r-i'>
+            <image src='{{headRight}}'></image>
+        </view>
+      </view>
+      <!--此处是机器人的图片和文字显示  -->
+      <view class='robort'>
+        <!--此处是机器人的图片显示  -->
+        <view class='l-i'>
+          <image src='{{headLeft}}'></image>
+        </view>
+        <!-- 此处是机器人的文字显示 -->
+        <view class='l-t'>
+          <text bindtap='voice'  data-text='{{item.robot}}'>{{item.robot}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+  </scroll-view>
+  </view>
+<!------------------------------- 此处是下方输入框------------------------------------- -->
+  <view class='send'>
+      <form bindsubmit='converSation'>
+        <view class='input'>
+          <input type='text' class='text' placeholder='说点什么吧~' value='{{dialogue}}' name='says'></input>
+          <button class='btn' id='btn'  form-type='submit'>发送</button>
+          <button class='btn-d' bindtap='delectChat' >清空</button>
+        </view>
+      </form>
+</view>
